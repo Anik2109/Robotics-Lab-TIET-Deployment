@@ -57,7 +57,7 @@ const AboutSection = () => {
             </div>
           </div>
           <div className="flex items-start pb-9">
-            <img src="/src/assets/Home Page/projects_icon.svg" alt="Publications Icon" className="w-16 h-14" />
+            <img src="/src/assets/Home Page/publications_icon.png" alt="Publications Icon" className="w-16 h-14" />
             <div className="ml-8 mt-4 text-left pt-5">
               <p className="text-2xl text-center text-black text-[32px] font-['Inter']">Z+</p>
               <p className="text-lg text-center text-black text-[32px] font-['Inter']">Publications</p>
