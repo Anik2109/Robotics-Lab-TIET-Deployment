@@ -1,12 +1,15 @@
+import { useState } from "react"
+import Navbar from './components/Navbar/navbar'
+import Main_content from './Main_content'
 
-import ImageChanger from './components/Image Changer/ImageChanger'
-import AboutSection from './components/AboutUS/AboutUs'
+
 function App() {
+  const[showcontent,setshowcontent]=useState(false);
 
   return (
     <>
-     <ImageChanger />
-     <AboutSection />
+    <Navbar setshowcontent={setshowcontent} />
+    {showcontent && <Main_content />}
     </>
   )
 }
