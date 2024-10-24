@@ -20,7 +20,7 @@ const ImageChanger = () => {
   }, [images.length]);
 
   return (
-    <div className="w-full h-[424px] mb-4 justify-end items-start gap-20 inline-flex">
+    <div className="relative w-full h-[424px] mb-4 justify-end items-start gap-20 inline-flex ">
       <img 
         className="absolute top-0 left-0 w-full h-[424px] object-cover" 
         alt="ERROR" 

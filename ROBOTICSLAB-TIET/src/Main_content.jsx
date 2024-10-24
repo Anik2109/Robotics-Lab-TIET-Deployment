@@ -6,7 +6,7 @@ import ContactUs from './components/Contact us/contact_us'
 
 export default function MainContent(){
 
-    return <div className="pt-16">
+    return <div className="pt-[80px]">
         <ImageChanger />
         <AboutSection />
         <Upcomingevents />

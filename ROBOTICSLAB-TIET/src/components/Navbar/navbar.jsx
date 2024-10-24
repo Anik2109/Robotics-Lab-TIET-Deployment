@@ -1,43 +1,40 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap/gsap-core";
 import { TextPlugin } from "gsap/all";
 
 // Register GSAP plugins
 gsap.registerPlugin(TextPlugin);
 
-export default function Navbar({setshowcontent}) {
+export default function Navbar({ setshowcontent }) {
     const logo = useRef();
     const rae = useRef();
     const tl = gsap.timeline();
+
+    // State to control when to show the rest of the navbar
+    const [showNavbarContent, setShowNavbarContent] = useState(false);
 
     useEffect(() => {
         // Calculate Center of Screen
         const centerX = window.innerWidth / 2 - 40;
         const centerY = window.innerHeight / 2 - 40;
-    
-        // Select Options
-        const options = gsap.utils.toArray('.option');
-    
-        tl.fromTo(logo.current, 
-            { x: centerX, y: centerY, opacity: 0,scale:1 }, 
-            { x: centerX, y: centerY, opacity: 1,scale:2, duration: 3 }
+
+        tl.fromTo(
+            logo.current,
+            { x: centerX, y: centerY, opacity: 0, scale: 1 },
+            { x: centerX, y: centerY, opacity: 1, scale: 2, duration: 3 }
         )
-        .fromTo(logo.current, 
-            { x: centerX, y: centerY,scale:2 }, 
-            { x: 0, y: 0,scale:1, duration: 3 }
-        )
-        .to(rae.current, { text: "ROBOTICS ELC ACTIVITY", duration: 1.5 })
-        .from(options, { opacity: 0, y: -20, stagger: 0.3, duration: 1 })
-        .then(()=>{
-            // Setting Showcontent to true to load the rest of the site
+        .to(logo.current, { x: 0, y: 0, scale: 1, duration: 0 })
+        .then(() => {
+            // After the logo returns to (0, 0), show the rest of the navbar content
+            
+            
+            // Set showcontent to true to load the rest of the site
             setTimeout(() => {
+                setShowNavbarContent(true);
                 setshowcontent(true); 
             }, 1000);
         });
-    
     }, []); // Empty array ensures it only runs once
-    
-    
 
     return (
         <>
@@ -52,19 +49,23 @@ export default function Navbar({setshowcontent}) {
                             ref={logo}
                         />
                     </div>
-                    <div className="text-xl font-semibold" ref={rae}>
-                        {/* Text will be animated */}
-                    </div>
+                    {showNavbarContent && (
+                        <div className="text-xl font-semibold" ref={rae}>
+                            ROBOTICS ELC ACTIVITY
+                        </div>
+                    )}
                 </div>
 
                 {/* Right section: Navigation Links */}
-                <div className="option flex gap-6 items-center text-lg">
-                    <div className="hover:text-red-600 hover:scale-110 cursor-pointer">HOME</div>
-                    <div className="hover:text-red-600 hover:scale-110 cursor-pointer">ACADEMICS</div>
-                    <div className="hover:text-red-600 hover:scale-110 cursor-pointer">PROJECTS</div>
-                    <div className="hover:text-red-600 hover:scale-110 cursor-pointer">RESEARCH</div>
-                    <div className="hover:text-red-600 hover:scale-110 cursor-pointer">EVENTS</div>
-                </div>
+                {showNavbarContent && (
+                    <div className="option flex gap-6 items-center text-lg">
+                        <div className="hover:text-red-600 hover:scale-110 cursor-pointer">HOME</div>
+                        <div className="hover:text-red-600 hover:scale-110 cursor-pointer">ACADEMICS</div>
+                        <div className="hover:text-red-600 hover:scale-110 cursor-pointer">PROJECTS</div>
+                        <div className="hover:text-red-600 hover:scale-110 cursor-pointer">RESEARCH</div>
+                        <div className="hover:text-red-600 hover:scale-110 cursor-pointer">EVENTS</div>
+                    </div>
+                )}
             </div>
         </>
     );
