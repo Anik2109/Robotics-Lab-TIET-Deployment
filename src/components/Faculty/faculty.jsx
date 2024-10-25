@@ -7,7 +7,7 @@ export default function Faculty(){
         {/*Heading*/}
         <div className="flex items-center gap-2">
             <div className="">
-                <img src="/public/assets/Home Page/Group.png" alt="Faculty" />
+                <img src="/assets/Home Page/Group.png" alt="Faculty" />
             </div>
             <div className="text-[28px] font-semibold ">
                 FACULTY

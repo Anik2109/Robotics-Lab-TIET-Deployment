@@ -37,7 +37,7 @@ export default function Upcomingevents() {
                 {/* Heading */}
                 <div className="flex items-center gap-2">
                     <div className="hover:scale-110">
-                        <img src="/public/assets/Home Page/Calendar.svg" alt="Calendar" />
+                        <img src="/assets/Home Page/Calendar.svg" alt="Calendar" />
                     </div>
                     <div className="text-[28px] font-semibold ">
                         UPCOMING EVENTS

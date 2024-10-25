@@ -3,13 +3,13 @@ export default function ContactUs() {
         <>
             <div className="w-11/12 mx-auto my-8 py-8 space-y-14">
                 <div className="contactus flex justify-center">
-                    <img src="/public/assets/Home Page/contactus.png" alt="Contact-us" />
+                    <img src="/assets/Home Page/contactus.png" alt="Contact-us" />
                 </div>
                 <div className="flex space-x-[6%]">
                     <div className="w-4/12 h-[238px] border-2 border-gray-300 p-4">
                         <div className="flex items-center space-x-3">
                             <div className="">
-                                <img src="/public/assets/Home Page/location_on.png" alt="logo" />
+                                <img src="/assets/Home Page/location_on.png" alt="logo" />
                             </div>
                             <div className="text-[15px]">OFFICE ADDRESS</div>
                         </div>
