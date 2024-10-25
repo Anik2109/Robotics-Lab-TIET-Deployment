@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
 
-import pic1 from '../../assets/Home Page/pic1.png';
-import pic2 from '../../assets/Home Page/pic2.png';
-import pic3 from '../../assets/Home Page/pic3.png';
-import pic4 from '../../assets/Home Page/pic4.png';
+import pic1 from '../../../public/assets/Home Page/pic1.png';
+import pic2 from '../../../public/assets/Home Page/pic2.png';
+import pic3 from '../../../public/assets/Home Page/pic3.png';
+import pic4 from '../../../public/assets/Home Page/pic4.png';
 
 const ImageChanger = () => {
   const images = [pic1, pic2, pic3, pic4];
