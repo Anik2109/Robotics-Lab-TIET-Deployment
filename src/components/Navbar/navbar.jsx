@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { gsap } from "gsap/gsap-core";
+import { gsap } from "gsap";
 import { TextPlugin } from "gsap/all";
 
 // Register GSAP plugins
