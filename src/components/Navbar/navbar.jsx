@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { gsap } from "gsap/gsap-core";
+import { gsap } from "gsap";
 import { TextPlugin } from "gsap/all";
 
 // Register GSAP plugins
@@ -8,12 +8,13 @@ gsap.registerPlugin(TextPlugin);
 export default function Navbar({ setshowcontent }) {
     const logo = useRef();
     const rae = useRef();
-    const tl = gsap.timeline();
+    
 
     // State to control when to show the rest of the navbar
     const [showNavbarContent, setShowNavbarContent] = useState(false);
 
     useEffect(() => {
+        const tl = gsap.timeline();
         // Calculate Center of Screen
         const centerX = window.innerWidth / 2 - 40;
         const centerY = window.innerHeight / 2 - 40;
