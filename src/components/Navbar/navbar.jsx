@@ -44,7 +44,7 @@ export default function Navbar({ setshowcontent }) {
                 <div className="flex items-center gap-6">
                     <div className="logo">
                         <img 
-                            src="public/assets/Home Page/logo.png" 
+                            src="/assets/Home Page/logo.png" 
                             alt="Thapar University" 
                             className="max-w-[60px] h-auto object-contain" 
                             ref={logo}

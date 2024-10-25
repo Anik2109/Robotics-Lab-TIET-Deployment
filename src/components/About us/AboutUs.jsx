@@ -5,7 +5,7 @@ const AboutSection = () => {
     <div
       className="relative flex flex-col items-center min-h-screen py-10"
       style={{
-        backgroundImage: `url('public/assets/Home Page/bg_about_card.png')`,
+        backgroundImage: `url('/assets/Home%20Page/bg_about_card.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
