@@ -52,7 +52,7 @@ export default function Navbar({ setshowcontent }) {
                     </div>
                     {showNavbarContent && (
                         <div className="text-xl font-semibold" ref={rae}>
-                            ROBOTICS ELC ACTIVITY
+                            ROBOTICS LAB
                         </div>
                     )}
                 </div>
