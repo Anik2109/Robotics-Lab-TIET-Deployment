@@ -46,7 +46,7 @@ export default function Navbar({setshowcontent}) {
                 <div className="flex items-center gap-6">
                     <div className="logo">
                         <img 
-                            src="/assets/Home Page/logo.png" 
+                            src="/assets/Home Page/lab_logo.jpeg" 
                             alt="Thapar University" 
                             className="max-w-[60px] h-auto object-contain" 
                             ref={logo}
@@ -54,7 +54,7 @@ export default function Navbar({setshowcontent}) {
                     </div>
                     <div className="text-xl font-semibold" ref={rae}>
                         {/* Text will be animated */}
-                        ROBOTICS LAB
+                        CSED | AUTONOMUS ROBOTICS LAB
                     </div>
                 </div>
 
