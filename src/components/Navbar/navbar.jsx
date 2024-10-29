@@ -28,8 +28,7 @@ export default function Navbar({setshowcontent}) {
         )
         .to(logo.current,{x:0,y:0,opacity:0,scale:1})
         .to(logo.current,{x:0,y:0,opacity:1,duration:1})
-        .from(rae.current,{opacity:0,y:-20,stagger:0.3,duration:1})
-        .from(options, { opacity: 0, y: -20, stagger: 0.3, duration: 1 })
+        .from([rae.current, options], { opacity: 0, y: -20, stagger: 0.3, duration: 1 })
         .then(()=>{
             //Setting Showcontent to true to load rest site
             setTimeout(() => {
