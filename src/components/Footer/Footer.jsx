@@ -2,9 +2,13 @@ export default function ContactUs() {
     return (
         <>
       <div className="w-11/12 mx-auto my-8 py-8 space-y-14">
-        <div className="contactus flex justify-center">
-          <img src="/assets/Home Page/contactus.png" alt="Contact-us" className="w-full max-w-xs sm:max-w-md" />
-        </div>
+      <div className="flex items-center justify-center mb-6">
+          <div className="w-[34px] border-t-2" style={{ height: '2px', borderColor: '#ba1518' }} />
+          <h2 className="text-2xl md:text-3xl text-center text-black font-medium font-['Inter'] mx-4">
+            CONTACT US
+          </h2>
+          <div className="w-[34px] border-t-2" style={{ height: '2px', borderColor: '#ba1518' }} />
+      </div>
   
         <div className="flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-8">
           <div className="w-full lg:w-4/12 border-2 border-gray-300 p-4 flex flex-col items-center">

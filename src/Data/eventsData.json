@@ -1,0 +1,40 @@
+[
+    {
+      "id": 1,
+      "image": "/assets/Events_Page/event1.png",
+      "title": "Event Name: Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusm",
+      "description": "Our current research is much more general, touching upon electrostatic and gecko-like adhesives for climbing and perching mobile robots as well as grippers for manipulator arms, localization safety for mobile robots, the intersection of robotics rban landscape"
+    },
+    {
+      "id": 2,
+      "image": "../../../public/assets/Home Page/pic2.png",
+      "title": "Event Name: Lorem ipsum dolor sit amet consectetur",
+      "description": "Our current research is much more general, touching upon electrostatic and gecko-like adhesives for climbing and perching mobile robots as well as grippers for manipulator arms, localization safety for mobile robots, the intersection of robotics urban landscape"
+    },
+    {
+      "id": 3,
+      "image": "../../../public/assets/Home Page/pic3.png",
+      "title": "Event Name: Lorem ipsum dolor sit amet consectetur",
+      "description": "Our current research is much more general, touching upon electrostatic and gecko-like adhesives for climbing and perching mobile robots as well as grippers for manipulator arms, localization safety for mobile robots, the intersection of robotics urban landscape"
+    },
+    {
+      "id": 4,
+      "image": "/assets/Events_Page/event1.png",
+      "title": "Event Name: Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusm",
+      "description": "Our current research is much more general, touching upon electrostatic and gecko-like adhesives for climbing and perching mobile robots as well as grippers for manipulator arms, localization safety for mobile robots, the intersection of robotics rban landscape"
+    },
+    {
+      "id": 5,
+      "image": "../../../public/assets/Home Page/pic2.png",
+      "title": "Event Name: Lorem ipsum dolor sit amet consectetur",
+      "description": "Our current research is much more general, touching upon electrostatic and gecko-like adhesives for climbing and perching mobile robots as well as grippers for manipulator arms, localization safety for mobile robots, the intersection of robotics urban landscape"
+    },
+    {
+      "id": 6,
+      "image": "../../../public/assets/Home Page/pic3.png",
+      "title": "Event Name: Lorem ipsum dolor sit amet consectetur",
+      "description": "Our current research is much more general, touching upon electrostatic and gecko-like adhesives for climbing and perching mobile robots as well as grippers for manipulator arms, localization safety for mobile robots, the intersection of robotics urban landscape"
+    }
+    
+  ]
+  

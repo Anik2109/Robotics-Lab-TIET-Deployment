@@ -1,6 +1,6 @@
 import ImageChanger from '../components/Image Changer/ImageChanger'
 import AboutSection from '../components/About us/AboutUs'
-import Upcomingevents from '../components/Events/event'
+import Upcomingevents from '../components/Upcomming_Events/upcomming_event'
 import Faculty from '../components/Faculty/faculty'
 
 
