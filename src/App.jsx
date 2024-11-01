@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Navbar from './components/Navbar/navbar'
-import Main_content from './Main_content'
-
+import { Outlet } from 'react-router-dom';
+import Footer from './components/Footer/Footer'
 
 function App() {
   const[showcontent,setshowcontent]=useState(false);
@@ -9,7 +9,8 @@ function App() {
   return (
     <>
     <Navbar setshowcontent={setshowcontent} />
-    {showcontent && <Main_content />}
+    {showcontent && <Outlet />}
+    {showcontent && <Footer />}
     </>
   )
 }
