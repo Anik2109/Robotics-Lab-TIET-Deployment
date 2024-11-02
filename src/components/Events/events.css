@@ -1,9 +1,0 @@
-.event-card {
-    box-shadow: none !important; /* Remove shadow from EventCard */
-    background-color: transparent !important; /* Ensure no grey overlay */
-}
-
-.swiper-slide {
-    box-shadow: none !important; /* Remove shadow from each slide */
-    background-color: transparent !important; /* Ensure no grey background */
-}
