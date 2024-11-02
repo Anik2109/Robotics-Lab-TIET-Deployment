@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import EventCard from "../Cards/Event Card/event_card.jsx";
-import eventsData from '../../data/eventsData';
+import eventsData from '../../Data/eventsData';
 
 function Event() {
     const [currentIndex, setCurrentIndex] = useState(0);
