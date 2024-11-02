@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function event_Card({ image, title, description }) {
+function EventCard({ image, title, description }) {
     return ( 
         <div className="rounded-lg overflow-hidden mx-auto w-[587px] md:w-[527px] sm:w-[350px] xs:w-full" >
             <img
@@ -26,4 +26,4 @@ function event_Card({ image, title, description }) {
     );
 }
 
-export default event_Card;
+export default EventCard;
