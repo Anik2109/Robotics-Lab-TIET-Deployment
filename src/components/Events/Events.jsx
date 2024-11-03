@@ -1,34 +1,20 @@
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import 'swiper/swiper-bundle.css';
-import EventCard from '../Cards/Event Card/Event_Card';
-import eventsData from '../../data/eventsData';
-import { Navigation, Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
-import './events.css'
-
-const swiperSettings = {
-    modules: [Navigation, Pagination, Autoplay, EffectCoverflow],
-    slidesPerView: 3,
-    slidesPerGroup: 1,
-    spaceBetween: 20,
-    initialSlide: 1,
-    autoHeight: false,
-    grabCursor: true,
-    loop: true,
-    effect: 'coverflow',
-    coverflowEffect: {
-      depth:  0,
-      rotate: 0,
-      scale: 0.8,
-      stretch: -60,
-      modifier: 1,
-    },
-    speed: 800, // Smoother transition speed
-    navigation: false,
-    pagination: false,
-};
+import React, { useEffect, useState } from "react";
+import EventCard from "../Cards/Event Card/event_card.jsx";
+import eventsData from '../../Data/eventsData';
 
 function Event() {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % eventsData.length);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
+
+    const prevIndex = (currentIndex - 1 + eventsData.length) % eventsData.length;
+    const nextIndex = (currentIndex + 1) % eventsData.length;
+
     return (
         <div
             className="relative flex flex-col items-center min-h-screen pt-10 mt-[80px]"
@@ -41,7 +27,6 @@ function Event() {
                 height: '50vh'
             }}
         >
-            {/* TITLE */}
             <div className="flex items-center justify-center mb-6">
                 <div className="w-[34px] border-t-2" style={{ height: '2px', borderColor: '#ba1518' }} />
                 <h2 className="text-2xl md:text-3xl text-center text-black font-medium font-['Inter'] mx-4">
@@ -50,26 +35,34 @@ function Event() {
                 <div className="w-[34px] border-t-2" style={{ height: '2px', borderColor: '#ba1518' }} />
             </div>
 
-            {/* SWIPER */}
-            <div className="w-full px-4 md:px-10 lg:px-20">
-                <Swiper {...swiperSettings} autoplay={{ delay: 2000, disableOnInteraction: false }} loop={true}>
-                    {eventsData.map((eventData, index) => (
-                        <SwiperSlide
-                            key={eventData.id}
-                            style={{ width: '300px' }}
-                            className={`transition-transform duration-500 ease-in-out
-                                ${index === 1 ? 'opacity-100 scale-105' : 'opacity-50 scale-95'}
-                            `}
-                        >
-                            <EventCard
-                                image={eventData.image}
-                                title={eventData.title}
-                                description={eventData.description}
-                                className="event-card"
-                            />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+            <div className="w-full flex space-x-5 justify-center mt-5">
+                <div className="w-[30%] overflow-hidden relative transition duration-500 ease-in-out">
+                    <div className="absolute left-1/5 transform -translate-x-[20%] w-[120%] scale-95 opacity-70">
+                        <EventCard
+                            image={eventsData[prevIndex].image}
+                            title={eventsData[prevIndex].title}
+                            description={eventsData[prevIndex].description}
+                        />
+                    </div>
+                </div>
+
+                <div className="w-[50%] scale-110 transition duration-500 ease-in-out opacity-100">
+                    <EventCard
+                        image={eventsData[currentIndex].image}
+                        title={eventsData[currentIndex].title}
+                        description={eventsData[currentIndex].description}
+                        className="event-card"
+                    />
+                </div>
+
+                <div className="w-[30%] overflow-hidden transition duration-500 ease-in-out">
+                    <EventCard
+                        image={eventsData[nextIndex].image}
+                        title={eventsData[nextIndex].title}
+                        description={eventsData[nextIndex].description}
+                        className="event-card"
+                    />
+                </div>
             </div>
         </div>
     );
