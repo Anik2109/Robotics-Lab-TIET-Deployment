@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { TextPlugin } from "gsap/all";
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink} from 'react-router-dom';
 
 // Register GSAP plugins
 gsap.registerPlugin(TextPlugin);
@@ -11,6 +11,9 @@ export default function Navbar({ setshowcontent }) {
     const rae = useRef();
     const tl = gsap.timeline();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    
+    
 
     useEffect(() => {
         // Calculate Center of Screen
@@ -68,20 +71,20 @@ export default function Navbar({ setshowcontent }) {
 
                     {/* Navigation Links */}
                     <div className={`option flex-col gap-4 items-center text-lg absolute top-20 left-0 w-full bg-white shadow-md md:static md:flex md:flex-row md:gap-6 md:ml-auto md:justify-end md:shadow-none ${isMobileMenuOpen ? 'flex' : 'hidden'}`}>
-                        <div className="hover:text-red-600 hover:scale-110 cursor-pointer">
-                            <NavLink to="/">HOME</NavLink>
+                        <div className="hover:text-red-600 hover:scale-110 cursor-pointer ">
+                            <NavLink to="/" className={({isActive})=>isActive?"text-red-600":""}>HOME</NavLink>
                         </div>
                         <div className="hover:text-red-600 hover:scale-110 cursor-pointer">
-                            <NavLink to="/academics">ACADEMICS</NavLink>
+                            <NavLink to="/academics" className={({isActive})=>isActive?"text-red-600":""}>ACADEMICS</NavLink>
                         </div>
                         <div className="hover:text-red-600 hover:scale-110 cursor-pointer">
-                            <NavLink to="/projects">PROJECTS</NavLink>
+                            <NavLink to="/projects" className={({isActive})=>isActive?"text-red-600":""}>PROJECTS</NavLink>
                         </div>
                         <div className="hover:text-red-600 hover:scale-110 cursor-pointer">
-                            <NavLink to="/research">RESEARCH</NavLink>
+                            <NavLink to="/research" className={({isActive})=>isActive?"text-red-600":""}>RESEARCH</NavLink>
                         </div>
                         <div className="hover:text-red-600 hover:scale-110 cursor-pointer">
-                            <NavLink to="/events">EVENTS</NavLink>
+                            <NavLink to="/events" className={({isActive})=>isActive?"text-red-600":""}>EVENTS</NavLink>
                         </div>
                     </div>
                 </div>
