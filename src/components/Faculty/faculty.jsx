@@ -32,7 +32,7 @@ export default function Faculty() {
             <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {[...Array(maxCards)].map((_, index) => (
                     <div key={index} className="text-center">
-                        <div className="card mx-auto w-full max-w-xs">
+                        <div className="card flex justify-center items-center  mx-auto w-full max-w-xs">
                             <FacultyCard />
                         </div>
                         <div className="text flex flex-col items-center justify-center my-4 text-[20px] space-y-2">
