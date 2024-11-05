@@ -46,7 +46,7 @@ export default function Navbar({ setshowcontent }) {
         <>
             <div className="fixed top-0 left-0 z-20 w-full px-6 py-4 bg-white shadow-md">
                 <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-6">
+                    <Link to="/" className="flex items-center gap-6">
                         <div className="logo">
                             <img 
                                 src="/assets/Home Page/lab_logo.jpeg" 
@@ -58,7 +58,7 @@ export default function Navbar({ setshowcontent }) {
                         <div className="text-xl font-semibold" ref={rae}>
                             CSED | AUTONOMOUS ROBOTICS LAB
                         </div>
-                    </div>
+                    </Link>
 
                     {/* Mobile Menu Toggle */}
                     <button 

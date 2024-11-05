@@ -3,12 +3,9 @@ import React from 'react';
 const AboutSection = () => {
   return (
     <div
-      className="relative flex flex-col items-center min-h-screen py-10"
+      className="relative flex flex-col items-center min-h-screen py-10 bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: `url('/assets/Home%20Page/bg_about_card.png')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
+        backgroundImage: `url('/assets/Home Page/bg_about_card.png')`,
       }}
     >
       {/* Background overlay */}
