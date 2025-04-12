@@ -28,3 +28,4 @@ const teamData = [
       linkedin: "https://www.linkedin.com/in/anik-kaushesh-997130323/"
     }
 ]
+export default teamData;

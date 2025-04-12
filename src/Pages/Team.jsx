@@ -2,7 +2,7 @@ import React from 'react';
 import backgroundImage from '/assets/Team/banner.png';
 import useScrollFadeIn from '../Hooks/Scroll';
 import Team_card from '../components/Cards/Team Card/Team_card';
-import teamData from '../Data/TeamData';
+import teamData from '../Data/TeamData.js';
 
 function Team() {
   const fadeRef = useScrollFadeIn({ fadeOnly: true, delay: 0.4 });
