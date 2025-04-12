@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from './App.jsx'
-import {Home,Events,Projects} from "./Pages/index"
+import {Home,Events,Project,AllProjects} from "./Pages/index"
 import './index.css'
 
 const router = createBrowserRouter([
@@ -16,9 +16,18 @@ const router = createBrowserRouter([
         {
           path: "/events",
           element: <Events />,
-        },{
+        },
+        {
           path:"/projects",
-          element:<Projects />
+          element:<Project />,
+        },
+        {
+          path: "/projects/all",
+          element: <AllProjects />
+        },
+        {
+          path:"/team",
+          element:<Home />
         }
       ]
     }

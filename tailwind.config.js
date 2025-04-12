@@ -1,11 +1,15 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx,html}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'radial-custom': 'radial-gradient(circle at 50% 75%, #5879BE, #053CB0 90%)',
+      },
+      fontFamily: {
+
+        poppins: ['Poppins', 'sans-serif'],
+      },
+    },
   },
-  plugins: [ require('tailwind-scrollbar-hide')],
+  plugins: [],
 }

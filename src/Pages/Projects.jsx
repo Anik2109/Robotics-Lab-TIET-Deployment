@@ -1,28 +1,33 @@
-import ProjectCard from "../components/Cards/Project Card/project_card";
-import projects_demodata from "../Data/projects_demodata";
+import React from 'react';
+import Projects from '../components/Projects/Projects';
+import useScrollFadeIn from '../Hooks/Scroll.js';
+import backgroundImage from '/assets/Projects_Page/banner.png'; 
+import {useEffect  } from "react";
 
-export default function Projects() {
-  return (
-    <div className="pt-36 lg:pt-28 ">
-      <div className="flex items-center justify-center mb-6">
-        <div className="w-[34px] border-t-2" style={{ height: '2px', borderColor: '#ba1518' }} />
-        <h2 className="text-2xl md:text-3xl text-center text-black font-medium font-['Inter'] mx-4">
-          PROJECTS
-        </h2>
-        <div className="w-[34px] border-t-2" style={{ height: '2px', borderColor: '#ba1518' }} />
-      </div>
 
-      {/* Projects Modules */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
-        {projects_demodata.map((project, index) => (
-          <ProjectCard
-            key={index}
-            title={project.title}
-            description={project.description}
-            completetag={project.completetag}
-          />
-        ))}
-      </div>
-    </div>
-  );
+function Project() {
+  const fadeRef = useScrollFadeIn({ fadeOnly: true, delay: 0.4 });
+
+    return ( 
+        <>
+          <div
+            ref={fadeRef}
+            className="z-0 w-full h-[296px] mt-[95px] relative overflow-hidden text-white font-sans"
+            style={{
+              backgroundImage: `url(${backgroundImage})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          >
+            <div className="z-10 absolute inset-0 bg-gradient-to-b from-blue-900/40 to-blue-900/40" />
+            <div className="relative z-20 w-full h-full flex flex-col justify-center items-center text-center gap-4">
+              <h1 className="text-white text-8xl font-medium font-['Poppins']">PROJECTS</h1>
+              <div className="w-[360px] h-0 outline outline-2  outline-white"></div>
+            </div>
+          </div>
+          <Projects/>  
+        </>
+     );
 }
+
+export default Project;

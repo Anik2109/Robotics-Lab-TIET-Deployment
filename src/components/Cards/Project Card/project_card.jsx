@@ -1,82 +1,53 @@
-import personimg from "../../../../public/assets/Projects_Page/person.png";
-import bookimg from "../../../../public/assets/Projects_Page/book.png";
-import clockimg from "../../../../public/assets/Projects_Page/clock.png";
-import personsimg from "../../../../public/assets/Projects_Page/persons.png";
-import img from "../../../../public/assets/Projects_Page/download.jpeg"
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function ProjectCard({ title, description,completetag }) {
-  const data = [
-    { label: "Students", value: "100+", img: personimg },
-    { label: "Publications", value: "50+", img: bookimg },
-    { label: "Duration", value: "10+", img: clockimg },
-    { label: "Team Size", value: "5+", img: personsimg },
-  ];
-
-  const tags = [
-    { tag: "Python" },
-    { tag: "JavaScript" }
-  ];
+export default function ProjectCard({p_id,image,title, description,completetag }) {
+  const navigate = useNavigate();
 
   function setcompletestatus(tag){
     if(tag=="Completed"){
-        return "bg-[#84FF88] text-green-700 "
+        return "bg-[#84FF8870]/45 text-[#06770AC9]/80 "
     }
     if(tag=="Active"){
-        return "bg-red-300 text-[#FF0000]"
+        return "bg-[#FFE3E3] text-red-600/95"
     }
     if(tag=="Ongoing"){
-         return "bg-yellow-100 text-[#d5c217]"
+         return "bg-yellow-300/60 text-yellow-400"
     }
     return "text-white"
 
   }
 
   return (
-    <div className="w-[380px] h-[530px] bg-white rounded-lg overflow-hidden p-4">
+    <div className="w-[308px] h-[374px] bg-white rounded-2xl shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
       {/* Image Section */}
-      <div className="h-48 bg-gray-200 rounded-t-2xl ">
-        <img className="w-full h-full object-cover rounded-t-2xl" src={img} alt="Base Img" />
+      <div className="w-full h-48 bg-white rounded-2xl p-3">
+        <img className="w-full h-full object-cover rounded-2xl justify-center" src={image} alt="Base Img" />
       </div>
 
       {/* Description Section */}
-      <div className="p-4">
-        <div className="flex justify-between items-center">
-            <h3 className="text-xl font-semibold mb-2">{title}</h3>
-            <div className={`px-2 py-2 text-sm rounded-full font-semibold ${setcompletestatus(completetag)}`}>
-                {completetag}
-            </div>
-        </div>
-        <p className="text-gray-600">
-          {description.length > 70 ? description.slice(0,70) + "..." : description}
-        </p>
-      </div>
-
-      {/* Data Section */}
-      <div className="p-4 grid grid-cols-2 gap-4 border-b-2 border-b-zinc-400">
-        {data.map((item, index) => (
-          <div key={index} className="flex items-center">
-            <img src={item.img} alt={item.label} className="w-8 h-8 mr-2" />
-            <div>
-              <div className="text-sm font-medium text-zinc-500">{item.label}</div>
-              <div className="text-lg font-bold">{item.value}</div>
-            </div>
+      <div className="p-3">
+        <div className="flex justify-between items-start gap-2">
+          <div className="flex-1 min-h-[2rem] text-black text-[20px] font-medium font-poppins leading-tight opacity-85">
+            {title}
           </div>
-        ))}
+          <div className={`px-2 py-2 text-sm rounded-full font-semibold ${setcompletestatus(completetag)}`}>
+            {completetag}
+          </div>
+        </div>
+        <p className="text-black opacity-60 pt-3 justify-center items-center">
+          {description.length > 80 ? description.slice(0,70) + "..." : description}
+        </p>
+        <div className="flex justify-end pr-2">
+          <img
+            className="w-9 h-9 cursor-pointer"
+            src="/assets/icons/arrow.svg"
+            alt="Arrow"
+            onClick={() => navigate(`/projects/all#${p_id}`)}
+          />
+        </div>
       </div>
 
-      {/* Language Tags */}
-      <div className="p-4 flex items-center justify-between">
-        <div className="flex space-x-2">
-          {tags.map((tag, index) => (
-            <span key={index} className="px-2 py-1 bg-gray-200 rounded-full text-sm text-gray-700">
-              {tag.tag}
-            </span>
-          ))}
-        </div>
-        <div className="text-red-600 font-semibold cursor-pointer">
-          View Full Details
-        </div>
-      </div>
     </div>
   );
 }

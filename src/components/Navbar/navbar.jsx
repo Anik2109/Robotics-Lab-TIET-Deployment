@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { TextPlugin } from "gsap/all";
-import { Link, NavLink} from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 // Register GSAP plugins
 gsap.registerPlugin(TextPlugin);
@@ -9,82 +9,97 @@ gsap.registerPlugin(TextPlugin);
 export default function Navbar({ setshowcontent }) {
     const logo = useRef();
     const rae = useRef();
+    const options = useRef();
     const tl = gsap.timeline();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    
-    
-
     useEffect(() => {
-        // Calculate Center of Screen
-        const centerX = window.innerWidth / 2 - 40;
-        const centerY = window.innerHeight / 2 - 40;
+        const hasAnimated = sessionStorage.getItem("navbarAnimated");
+    
+        if (!hasAnimated) {
+            const logoRect = logo.current.getBoundingClientRect();
+            const centerX = window.innerWidth / 2 - logoRect.width / 2;
+            const centerY = window.innerHeight / 2 - logoRect.height / 2;
+    
+            tl.fromTo(logo.current, 
+                { x: centerX, y: centerY, opacity: 0, scale: 1 }, 
+                { x: centerX, y: centerY, opacity: 1, scale: 2, duration: 3 }
+            )
+            .fromTo(logo.current, 
+                { x: centerX, y: centerY, scale: 2 }, 
+                { x: centerX, y: centerY, opacity: 0, duration: 1 }
+            )
+            .to(logo.current, { x: 0, y: 0, opacity: 0, scale: 1 })
+            .to(logo.current, { x: 0, y: 0, opacity: 1, duration: 1 })
+            .then(() => {
+                sessionStorage.setItem("navbarAnimated", "true");
+                setshowcontent(true); // Show full content first
 
-        // Select Options
-        const options = gsap.utils.toArray('.option');
-
-        tl.fromTo(logo.current, 
-            { x: centerX, y: centerY, opacity: 0, scale: 1 }, 
-            { x: centerX, y: centerY, opacity: 1, scale: 2, duration: 3 }
-        )
-        .fromTo(logo.current, 
-            { x: centerX, y: centerY, scale: 2 }, 
-            { x: centerX, y: centerY, opacity: 0, duration: 1 }
-        )
-        .to(logo.current, { x: 0, y: 0, opacity: 0, scale: 1 })
-        .to(logo.current, { x: 0, y: 0, opacity: 1, duration: 1 })
-        .from([rae.current, options], { opacity: 0, y: -20, stagger: 0.3, duration: 1 })
-        .then(() => {
-            // Setting Showcontent to true to load rest site
-            setTimeout(() => {
-                setshowcontent(true); 
-            }, 400);
-        });
+                const tlShow = gsap.timeline();
+                tlShow.to(options.current, { opacity: 1, y: 0, duration: 0.5 })
+                      .to(rae.current, { opacity: 1, y: 0, duration: 0.5 }, "<");
+            });
+        } else {
+            // Skip animation and show content instantly
+            gsap.set(logo.current, { opacity: 1, x: 0, y: 0, scale: 1 });
+            gsap.set(rae.current, { opacity: 1, y: 0 });
+            gsap.set(options.current, { opacity: 1, y: 0 });
+            setshowcontent(true);
+        }
     }, []);
 
     return (
         <>
-            <div className="fixed top-0 left-0 z-20 w-full px-6 py-4 bg-white shadow-md">
+            <div className="fixed top-0 left-0 z-50 opacity-80 w-full px-6 py-4 bg-white">
                 <div className="flex justify-between items-center">
-                    <Link to="/" className="flex items-center gap-6">
+                    <Link to="/" className="flex items-center ">
                         <div className="logo">
                             <img 
-                                src="/assets/Home Page/lab_logo.jpeg" 
+                                src="/assets/lab_logo.jpeg" 
                                 alt="Thapar University" 
-                                className="max-w-[50px] h-auto object-contain" 
+                                className="max-w-[60px] h-auto object-contain rounded-full" 
                                 ref={logo}
                             />
                         </div>
-                        <div className="text-xl font-semibold" ref={rae}>
-                            CSED | AUTONOMOUS ROBOTICS LAB
-                        </div>
+                        <div ref={rae} className="opacity-0 w-96 text-center justify-center text-[#282828] text-3xl font-medium font-poppins tracking-tight">ROBOTICS LAB, CSED, TIET</div>
                     </Link>
 
-                    {/* Mobile Menu Toggle */}
+                    {/* Mobile Menu Toggle
                     <button 
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
-                        className="text-gray-600 md:hidden focus:outline-none">
+                        className="text-gray-600 focus:outline-none">
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
+                    </button> */}
+
+                    {/* Developer-only button to replay animation */}
+                    <button
+                        onClick={() => {
+                        sessionStorage.removeItem("navbarAnimated");
+                        window.location.reload();
+                      }}
+                      className="px-3 py-1 text-sm bg-blue-600 opacity-0 hover:opacity-100 rounded"
+                    >
+                      Replay Animation (Dev)                        
                     </button>
 
                     {/* Navigation Links */}
-                    <div className={`option flex-col gap-4 items-center text-lg absolute top-20 left-0 w-full bg-white shadow-md md:static md:flex md:flex-row md:gap-6 md:ml-auto md:justify-end md:shadow-none ${isMobileMenuOpen ? 'flex' : 'hidden'}`}>
-                        <div className="hover:text-red-600 hover:scale-110 cursor-pointer ">
-                            <NavLink to="/" className={({isActive})=>isActive?"text-red-600":""}>HOME</NavLink>
+                    <div ref={options} className="option opacity-0 flex gap-7 items-center font-poppins text-lg font-medium text-color-[#282828]">
+                        <div className="hover:text-[#0A3796] hover:scale-110 cursor-pointer ">
+                            <NavLink to="/" className={({isActive})=>isActive?"text-[#0A3796]":""}>HOME</NavLink>
                         </div>
-                        <div className="hover:text-red-600 hover:scale-110 cursor-pointer">
-                            <NavLink to="/academics" className={({isActive})=>isActive?"text-red-600":""}>ACADEMICS</NavLink>
+                        <div className="hover:text-[#0A3796] hover:scale-110 cursor-pointer">
+                            <NavLink to="/academics" className={({isActive})=>isActive?"text-[#0A3796]":""}>ACADEMICS</NavLink>
                         </div>
-                        <div className="hover:text-red-600 hover:scale-110 cursor-pointer">
-                            <NavLink to="/projects" className={({isActive})=>isActive?"text-red-600":""}>PROJECTS</NavLink>
+                        <div className="hover:text-[#0A3796] hover:scale-110 cursor-pointer">
+                            <NavLink to="/projects" className={({isActive})=>isActive?"text-[#0A3796]":""}>PROJECTS</NavLink>
                         </div>
-                        <div className="hover:text-red-600 hover:scale-110 cursor-pointer">
-                            <NavLink to="/research" className={({isActive})=>isActive?"text-red-600":""}>RESEARCH</NavLink>
+                        <div className="hover:text-[#0A3796] hover:scale-110 cursor-pointer">
+                            <NavLink to="/research" className={({isActive})=>isActive?"text-[#0A3796]":""}>RESEARCH</NavLink>
                         </div>
-                        <div className="hover:text-red-600 hover:scale-110 cursor-pointer">
-                            <NavLink to="/events" className={({isActive})=>isActive?"text-red-600":""}>EVENTS</NavLink>
+                        <div className="hover:text-[#0A3796] hover:scale-110 cursor-pointer">
+                            <NavLink to="/events" className={({isActive})=>isActive?"text-[#0A3796]":""}>EVENTS</NavLink>
                         </div>
                     </div>
                 </div>

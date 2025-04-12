@@ -1,48 +1,28 @@
-import FacultyCard from "../Cards/Faculty Card/faculty_card";
-import { useState, useEffect } from "react";
+import React from 'react'
+import FacultyCard from '../Cards/Faculty Card/faculty_card'
+import useScrollFadeIn from '../../Hooks/Scroll'
 
-export default function Faculty() {
-    const [maxCards, setMaxCards] = useState(4); // default to showing 4 cards
+function Faculty() {
+  const titleRef = useScrollFadeIn({ direction: 'y' });
+  const facultyCardRef = useScrollFadeIn({ direction: 'y'}) 
+  const blurRef = useScrollFadeIn({ direction: 'y' });
 
-    // Update maxCards based on screen size
-    useEffect(() => {
-        const updateMaxCards = () => {
-            if (window.innerWidth < 640) setMaxCards(2); // smaller screens show 2 cards
-            else if (window.innerWidth < 768) setMaxCards(3); // medium screens show 3 cards
-            else setMaxCards(4); // larger screens show 4 cards
-        };
-
-        updateMaxCards(); // initial check
-        window.addEventListener("resize", updateMaxCards); // update on resize
-
-        return () => window.removeEventListener("resize", updateMaxCards);
-    }, []);
-
-    return (
-        <div className="w-11/12 mx-auto py-8 space-y-8">
-            {/* Heading */}
-            <div className="flex items-center gap-2">
-                <div>
-                    <img src="/assets/Home Page/Group.png" alt="Faculty" />
-                </div>
-                <div className="text-[28px] font-semibold">FACULTY</div>
-            </div>
-
-            {/* Cards */}
-            <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                {[...Array(maxCards)].map((_, index) => (
-                    <div key={index} className="text-center">
-                        <div className="card flex justify-center items-center  mx-auto w-full max-w-xs">
-                            <FacultyCard />
-                        </div>
-                        <div className="text flex flex-col items-center justify-center my-4 text-[20px] space-y-2">
-                            <div>Name</div>
-                            <div>Position</div>
-                            <div>Contact</div>
-                        </div>
-                    </div>
-                ))}
-            </div>
+  return (
+    <>
+        <div ref={titleRef} className="flex items-center justify-center mb-5 mt-[200px]">
+            <div className="w-full h-12 text-center justify-start text-[#282828] text-6xl font-semibold font-['Poppins']">FACULTY</div>
         </div>
-    );
+        <div className="relative flex justify-center mt-20">
+          <div ref={blurRef} className="absolute z-0 w-[395px] h-[800px] bg-[#96BAFF40]/25 rounded-[20px] blur-[20px]"></div>
+          <div ref={facultyCardRef} className="relative z-10 flex flex-wrap justify-center gap-20 px-4">
+            <FacultyCard/>
+          </div>
+        </div>
+        <div ref={titleRef} className="flex items-center justify-center mt-44">
+            <div className="w-full h-16 text-center justify-start text-[#282828] text-6xl font-semibold font-['Poppins']">OUR PROJECTS</div>
+        </div>
+    </>
+  )
 }
+
+export default Faculty

@@ -1,0 +1,80 @@
+import React from 'react';
+import { useState, useEffect } from 'react';
+import useScrollFadeIn from '../../Hooks/Scroll.js';
+
+import pic1 from '/assets/Home_Page/backdrop_img1.png';
+import pic2 from '/assets/Home_Page/backdrop_img2.png';
+import pic3 from '/assets/Home_Page/backdrop_img3.png';
+import pic4 from '/assets/Home_Page/backdrop_img4.png';
+
+const Landing_img = () => {
+  const fadeRef = useScrollFadeIn();
+  const images = [pic1, pic2, pic3, pic4];
+  const [currentImage, setCurrentImage] = useState(images[0]);
+  const [prevImage, setPrevImage] = useState(null);
+  const [isFading, setIsFading] = useState(false);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setIsFading(true);
+      setPrevImage(currentImage);
+      const nextIndex = (images.indexOf(currentImage) + 1) % images.length;
+      const nextImage = images[nextIndex];
+
+      setTimeout(() => {
+        setCurrentImage(nextImage);
+        setIsFading(false);
+      }, 500);
+    }, 2500);
+
+    return () => clearInterval(intervalId);
+  }, [currentImage, images]);
+
+  return (
+    <div ref={fadeRef} className="relative rounded-[20px] overflow-hidden mt-12 mx-auto w-[1210px] h-[424px] flex items-center justify-center">
+      {prevImage && (
+        <img
+          src={prevImage}
+          alt="Previous"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isFading ? 'opacity-0' : 'opacity-0'}`}
+          style={{ zIndex: 10 }}
+        />
+      )}
+      <img
+        src={currentImage}
+        alt="Current"
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isFading ? 'opacity-100' : 'opacity-100'}`}
+        style={{ zIndex: 0 }}
+      />
+      {/* Overlay */}
+      <div
+        className="absolute inset-0 z-20 "
+        style={{
+            background: 'linear-gradient(to right, rgba(3, 31, 89, 0.5), rgba(10, 36, 73, 0.5))',
+        }}
+      />
+
+      {/* Content */}
+      <div className="relative z-30 flex items-center w-full">
+        {/* Robot Image */}
+        <img
+          src="/assets/Home_Page/lab_logo_nobg.png"
+          alt="Robot Icon"
+          className="w-[305px] h-[305px] object-contain"
+        />
+
+        {/* Text */}
+        <div className="text-white w-[896px] h-44 ">
+             <h1 className="text-[64px] font-semibold font-['Poppins']">
+                Lorem ipsum dolor sit amet
+            </h1>
+            <p className="text-4xl leading-[60px] text-center font-medium font-['Poppins'] mt-4 drop-shadow">
+                Sed do eiusmod tempor incididunt ut labore
+            </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Landing_img;

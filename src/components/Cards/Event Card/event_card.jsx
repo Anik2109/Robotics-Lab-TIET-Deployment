@@ -3,16 +3,16 @@ import React from 'react';
 function Event_Card({ image, title, description }) {
     return ( 
         <div 
-            className="rounded-lg overflow-hidden mx-auto w-full sm:max-w-sm md:max-w-md lg:max-w-[620px]"
+            className="rounded-lg overflow-hidden w-full sm:max-w-sm md:max-w-md lg:max-w-[620px]"
             style={{ boxShadow: 'none', backgroundColor: 'transparent' }}
         >
             <img
                 src={image}
                 alt="Event"
-                className="w-full h-[240px] sm:h-[180px] md:h-[240px] lg:h-[289px] object-cover object-center rounded-t-lg"
+                className="w-full h-[240px] sm:h-[180px] md:h-[240px] lg:h-[289px] object-cover object-center rounded-2xl"
             />
             <div className="p-4 sm:p-4 md:p-5">
-                <div className="text-[#c61013] text-lg sm:text-lg md:text-xl lg:text-2xl font-medium font-['Inter']">
+                <div className="text-[#031F59] text-lg sm:text-lg md:text-xl lg:text-2xl font-medium font-['Inter']">
                     {title}
                 </div>
                 <div className="mt-2">

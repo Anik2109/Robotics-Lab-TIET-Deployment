@@ -1,81 +1,66 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import StatsCounter from './stats_counter.jsx'; 
+import useScrollFadeIn from '../../Hooks/Scroll.js';
 
 const AboutSection = () => {
+  const location = useLocation();
+  const aboutRef = useScrollFadeIn({ direction: 'y' });
+  const statsRef = useScrollFadeIn({ direction: 'y' });
+  const blurRef = useScrollFadeIn({ direction: 'y' });
+
+  const smoothScrollTo = (targetY, duration = 1600) => {
+    const startY = window.scrollY;
+    const distance = targetY - startY;
+    let startTime = null;
+
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = timestamp - startTime;
+      const percent = Math.min(progress / duration, 1);
+      window.scrollTo(0, startY + distance * percent);
+      if (progress < duration) {
+        requestAnimationFrame(step);
+      }
+    };
+
+    requestAnimationFrame(step);
+  };
+
+  useEffect(() => {
+    if (location.hash === '#about-us') {
+      const section = document.getElementById('about-us');
+      if (section) {
+        const y = section.getBoundingClientRect().top + window.scrollY;
+        smoothScrollTo(y, 1600);
+      }
+    }
+  }, [location]);
+
   return (
-    <div
-      className="relative flex flex-col items-center min-h-screen py-10 bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `url('/assets/Home Page/bg_about_card.png')`,
-      }}
-    >
-      {/* Background overlay */}
-      <div className="absolute inset-0 bg-black/40 z-0"></div>
+    <div id="about-us" className="flex flex-col items-center justify-center w-full pt-24 px-14 bg-white">
+      
+      <div className="flex justify-center relative">
+        <div ref={blurRef} className="absolute z-0 w-[1245px] h-[660px] bg-[#96BAFF40]/25 rounded-[20px] blur-[20px] p-6 mx-auto"></div>
+        {/* Main content container */}
+        <div ref={aboutRef} className="w-[1210px] h-[625px] bg-white rounded-2xl p-8 z-10">
+          {/* Title section */}
+          <div className="flex items-center justify-center pb-12">
+              <div className="w-full text-center justify-start text-[#282828] text-5xl font-semibold font-['Poppins']">ABOUT US</div>
+          </div>
 
-      {/* Main content container aligned with navbar width */}
-      <div className="relative z-10 w-full max-w-screen-lg mx-auto h-auto bg-white bg-opacity-90 shadow-lg p-6 md:p-10 mb-10">
-        
-        {/* Title section */}
-        <div className="flex items-center justify-center mb-6">
-          <div className="w-[34px] border-t-2" style={{ height: '2px', borderColor: '#ba1518' }} />
-          <h2 className="text-2xl md:text-3xl text-center text-black font-medium font-['Inter'] mx-4">
-            ABOUT US
-          </h2>
-          <div className="w-[34px] border-t-2" style={{ height: '2px', borderColor: '#ba1518' }} />
+          {/* Paragraph */}
+          <div className="w-[1099px] px-12 pb-20 mb-10 text-justify justify-center text-[#454545] text-[25px] font-medium font-['Poppins'] leading-10">
+          The Autonomous Robotics Lab at Thapar Institute of Technology is a center for research and innovation in robotics and intelligent autonomous systems. Our work spans mobile robotics, AI, computer vision, embedded systems, and human-robot interaction. We aim to build smart, adaptive machines capable of operating with minimal human input in real-world environments.
+          <br/>The lab provides a collaborative space for students, researchers, and faculty to explore cutting-edge technologies through hands-on projects, interdisciplinary research, and partnerships with industry. From autonomous ground vehicles to drone systems, we are driving forward the future of robotics — one breakthrough at a time.
+    
+          </div>
         </div>
-        
-        {/* Paragraph */}
-        <p className="text-left text-black text-lg md:text-xl font-medium font-['Inter'] px-4 md:px-20 pb-8">
-          The general area of robotics with specific attention to mobility in challenging environments. Our current research is much more general, touching upon electrostatic and gecko-like adhesives for climbing and perching mobile robots as well as grippers for manipulator arms, localization safety for mobile robots, the intersection of robotics and urban landscape design, particle-based soft robots, and autonomous flight for UAVs in GNSS-denied environments.
-          <br />
-          Our research is also applied to various industries, contributing to advancements in robotics and autonomous systems.
-        </p>
       </div>
-
-      {/* Info Cards Section */}
-      <div className="relative z-10 w-full max-w-screen-lg mx-auto h-auto bg-white bg-opacity-90 shadow-lg p-6 md:p-10 flex flex-col md:flex-row items-center gap-6">
-        {/* Decorative image */}
-        <div className="flex-1 flex items-center justify-center mb-6 md:mb-0">
-          <img src="/assets/Home Page/Vector_design.png" alt="Decorative" className="max-w-full w-[200px] md:w-[270px] h-auto" />
-        </div>
-
-        {/* Info grid */}
-        <div className="flex-1 grid grid-cols-2 gap-4 md:gap-8 text-center">
-          {/* Faculty Card */}
-          <div className="flex items-center">
-            <img src="/assets/Home Page/faculty_icon.svg" alt="Faculty Icon" className="w-12 h-12 md:w-16 md:h-14" />
-            <div className="ml-4 md:ml-8 text-left">
-              <p className="text-lg md:text-2xl font-semibold">Y</p>
-              <p className="text-base md:text-lg">Faculty</p>
-            </div>
-          </div>
-
-          {/* Project Card */}
-          <div className="flex items-center">
-            <img src="/assets/Home Page/projects_icon.svg" alt="Project Icon" className="w-12 h-12 md:w-16 md:h-14" />
-            <div className="ml-4 md:ml-8 text-left">
-              <p className="text-lg md:text-2xl font-semibold">X</p>
-              <p className="text-base md:text-lg">Project</p>
-            </div>
-          </div>
-
-          {/* Students Card */}
-          <div className="flex items-center">
-            <img src="/assets/Home Page/students_icon.svg" alt="Students Icon" className="w-12 h-12 md:w-16 md:h-14" />
-            <div className="ml-4 md:ml-8 text-left">
-              <p className="text-lg md:text-2xl font-semibold">1000+</p>
-              <p className="text-base md:text-lg">Students</p>
-            </div>
-          </div>
-
-          {/* Publications Card */}
-          <div className="flex items-center">
-            <img src="/assets/Home Page/publications_icon.png" alt="Publications Icon" className="w-12 h-12 md:w-16 md:h-14" />
-            <div className="ml-4 md:ml-8 text-left">
-              <p className="text-lg md:text-2xl font-semibold">Z+</p>
-              <p className="text-base md:text-lg">Publications</p>
-            </div>
-          </div>
-        </div>
+      {/* Stats section */}   
+      <div ref={statsRef} className="w-[1200px] mt-28 mb-[194px]">
+        <StatsCounter />
       </div>
     </div>
   );

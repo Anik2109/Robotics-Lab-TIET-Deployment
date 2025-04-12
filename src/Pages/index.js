@@ -1,5 +1,6 @@
 import Home from "./Home";
 import Events from "./Events";
-import Projects from "./Projects";
+import Project from "./Projects";
+import AllProjects from "./AllProjects";
 
-export {Home,Events,Projects};
+export {Home,Events,Project,AllProjects};

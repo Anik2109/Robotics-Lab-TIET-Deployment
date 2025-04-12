@@ -1,86 +1,92 @@
-export default function ContactUs() {
-    return (
-        <>
-      <div className="w-11/12 mx-auto my-8 py-8 space-y-14">
-      <div className="flex items-center justify-center mb-6">
-          <div className="w-[34px] border-t-2" style={{ height: '2px', borderColor: '#ba1518' }} />
-          <h2 className="text-2xl md:text-3xl text-center text-black font-medium font-['Inter'] mx-4">
-            CONTACT US
-          </h2>
-          <div className="w-[34px] border-t-2" style={{ height: '2px', borderColor: '#ba1518' }} />
-      </div>
-  
-        <div className="flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-8">
-          <div className="w-full lg:w-4/12 border-2 border-gray-300 p-4 flex flex-col items-center">
-            <div className="flex items-center space-x-3 mb-4">
-              <img src="/assets/Home Page/location_on.png" alt="logo" className="w-6 h-6" />
-              <div>
-                <h2 className="text-xl font-semibold">Office Address</h2>
-                <p className="text-sm text-center lg:text-left">
-                  Thapar Institute of Engineering & Technology, Patiala, Punjab
-                </p>
-              </div>
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import useScrollFadeIn from '../../Hooks/Scroll.js';
+export default function Footer() {
+  const leftSideRef = useScrollFadeIn({ direction: 'x+' });
+  const rightSideRef1 = useScrollFadeIn({ direction: 'x-' });
+  const rightSideRef2 = useScrollFadeIn({ direction: 'x-' });
+  return (
+    <>
+      <div className="relative w-full mt-64 h-[400px]">
+        <img className="absolute z-0 w-full h-full opacity-95 object-cover" src="/assets/footer_img.png" />
+        <div className="absolute z-10 w-full h-full bg-gradient-to-b from-[#0E2D90]/90 to-[#0E2D90]/90 opacity-50"></div>
+
+        <div className="absolute z-20 w-full h-full pt-14 flex text-white px-28">
+          {/* Left Description */}
+          <div ref={leftSideRef} className="max-w-lg space-y-4 text-lg leading-relaxed">
+            <div className="flex items-center font-poppins font-medium text-xl justify-center w-[460px] h-[200px]">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.esse cillum dolore eu fugiat nulla pariatur.
+              </p>
             </div>
-            <div className="w-full flex justify-center pt-5">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3442.8498261447544!2d76.36584347578116!3d30.35521757476851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391029228943d1b5%3A0x3d1c023be8b9eaf!2sNew%20CSED%20Building!5e0!3m2!1sen!2sin!4v1729935585295!5m2!1sen!2sin"
-                className="w-full sm:w-[250px] md:w-[350px] lg:w-[450px] h-[325px] md:h-[238px]"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+            <div className="flex space-x-4 pt-4">
+              <a href="https://www.instagram.com/tietofficial" target="_blank" rel="noopener noreferrer">
+                <img src="/assets/icons/Instagram.svg" alt="Instagram" className="w-9 h-9" />
+              </a>
+              <a href="https://www.linkedin.com/school/tietofficial/" target="_blank" rel="noopener noreferrer">
+                <img src="/assets/icons/Linkedin.svg" alt="LinkedIn" className="w-9 h-9" />
+              </a>
             </div>
           </div>
-  
-          <div className="w-full lg:w-7/12 border-2 border-gray-300 p-4">
-            <form className="space-y-4">
-              <div>
-                <label className="block mb-2 text-sm font-medium">Name</label>
-                <input
-                  type="text"
-                  className="w-full border border-gray-300 p-2 rounded"
-                  placeholder="Your Name"
-                />
-              </div>
-              <div>
-                <label className="block mb-2 text-sm font-medium">Email</label>
-                <input
-                  type="email"
-                  className="w-full border border-gray-300 p-2 rounded"
-                  placeholder="Your Email"
-                />
-              </div>
-              <div>
-                <label className="block mb-2 text-sm font-medium">Subject</label>
-                <input
-                  type="text"
-                  className="w-full border border-gray-300 p-2 rounded"
-                  placeholder="Subject"
-                />
-              </div>
-              <div>
-                <label className="block mb-2 text-sm font-medium">Message</label>
-                <textarea
-                  className="w-full border border-gray-300 p-2 rounded"
-                  rows="4"
-                  placeholder="Your Message"
-                ></textarea>
-              </div>
-              <div className="flex justify-center">
-                <button
-                  type="submit"
-                  className="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600"
+
+          {/* Resources */}
+          <div ref={rightSideRef1} className="space-y-4 ml-[288px] mr-[72px]">
+            <h2 className="text-2xl font-poppins font-semibold pb-5">Resources</h2>
+            <ul className="space-y-2 text-lg pb-[7px]">
+              <li>
+                <span
+                  onClick={() => {
+                    const section = document.getElementById('about-us');
+                    if (section) {
+                      section.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="hover:underline cursor-pointer"
                 >
-                  Send Message
-                </button>
-              </div>
-            </form>
+                  About Us
+                </span>
+              </li>
+              <li>
+                <NavLink to="/team" className="hover:underline">Our Team</NavLink>
+              </li>
+              <li>
+              <span
+                  onClick={() => {
+                    const section = document.getElementById('contact-us');
+                    if (section) {
+                      section.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="hover:underline cursor-pointer"
+                >
+                  Contact Us
+                </span>
+              </li>
+              <li className="flex items-center gap-3 pt-10 w-full max-w-xs">
+                <img src="/assets/icons/location.svg" alt="Location_Pin" className="w-6 h-6" />
+                <span className="text-left whitespace-nowrap">Office Address</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Information */}
+          <div ref={rightSideRef2} className="space-y-4">
+            <h2 className="text-2xl font-poppins font-semibold pb-5">Information</h2>
+            <ul className="space-y-2 text-lg pb-[7px]">
+              <li>
+                Privacy Policy
+              </li>
+              <li>
+                Terms And Condition
+              </li>
+              <li>
+                Cookie Policy
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-      <div className="w-full" style={{ height: '97px', backgroundColor: '#BE0B15' }} />
-      </>
-    );
-  }
-  
+    </>
+  );
+}
