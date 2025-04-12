@@ -11,14 +11,13 @@ function AllProjects() {
 
   useEffect(() => {
     if (location.hash) {
-      const id = location.hash.substring(1); // Get the id from the hash
+      const id = location.hash.substring(1); 
       const element = document.getElementById(id);
   
-      // If the element is found, scroll to it with smooth behavior
       if (element) {
         window.scrollTo({
-          top: element.offsetTop - 100, // Offset by 100px (adjust as needed)
-          behavior: 'smooth',
+          top: element.offsetTop - 90, 
+          behavior: 'auto', 
         });
       }
     }

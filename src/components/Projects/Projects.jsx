@@ -4,8 +4,8 @@ import projects_demodata from '../../Data/projectsData';
 import useScrollFadeIn from '../../Hooks/Scroll';
 
 function Projects() {
-  const titleRef = useScrollFadeIn({ direction: 'y' });
   const projectCardRef = useScrollFadeIn({ direction: 'y'}) 
+  
 
   return (
     <>

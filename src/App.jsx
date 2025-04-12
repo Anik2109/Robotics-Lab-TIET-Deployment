@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import Footer from './components/Footer/Footer.jsx'
 import '@fontsource/poppins'
 import useScrollFadeIn from "./Hooks/Scroll.js";
+import ScrollToTop from "./utils/ScrollToTop.jsx";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
   return (
     <>
       <Navbar setshowcontent={setshowcontent} />
+      <ScrollToTop />
       {showcontent && (
         <>
           <Outlet />

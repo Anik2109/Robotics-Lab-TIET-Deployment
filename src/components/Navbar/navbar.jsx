@@ -99,7 +99,7 @@ export default function Navbar({ setshowcontent }) {
                             <NavLink to="/research" className={({isActive})=>isActive?"text-[#0A3796]":""}>RESEARCH</NavLink>
                         </div>
                         <div className="hover:text-[#0A3796] hover:scale-110 cursor-pointer">
-                            <NavLink to="/events" className={({isActive})=>isActive?"text-[#0A3796]":""}>EVENTS</NavLink>
+                            <NavLink to="/#events">EVENTS</NavLink>
                         </div>
                     </div>
                 </div>

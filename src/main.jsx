@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from './App.jsx'
-import {Home,Events,Project,AllProjects} from "./Pages/index"
+import {Home,Events,Project,AllProjects,Team} from "./Pages/index"
 import './index.css'
 
 const router = createBrowserRouter([
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
         },
         {
           path:"/team",
-          element:<Home />
+          element:<Team/>
         }
       ]
     }
