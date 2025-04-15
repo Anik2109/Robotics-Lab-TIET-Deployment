@@ -102,21 +102,21 @@ const Carousel = (props) => {
   }, [emblaApi, tweenOpacity])
 
   return (
-    <div ref={fadeRef} className=" mb-20 mx-auto w-full relative">
+    <div ref={fadeRef} className=" mb-[5.55vw] mx-auto w-full relative">
       <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex touch-pan-y ml-[-100px]">
+        <div className="flex touch-pan-y ml-[-6.94vw]">
           {eventsData.map((event, index) => (
             <div
-              className={`group flex-none w-[70%] min-w-0 pl-8`}
+              className={`group flex-none w-[70%] min-w-0 pl-[0.56vw]`}
               key={event.id}
             >
               <img
-                className="w-full h-[400px] object-cover"
+                className="w-full h-[27.78vw] object-cover"
                 src={event.image}
                 alt={event.title}
               />
-              <div className="pt-8">
-                <div className="w-full justify-center text-center text-[#031F59] text-[22px] font-medium font-['Poppins']">{event.title}</div>
+              <div className="pt-[2.22vw]">
+                <div className="w-full justify-center text-center text-[#031F59] text-[1.53vw] font-medium font-['Poppins']">{event.title}</div>
               </div>
             </div>
           ))}
@@ -127,12 +127,12 @@ const Carousel = (props) => {
         <PrevButton
           onClick={() => { onPrevButtonClick(); startAutoplay(); }}
           disabled={prevBtnDisabled}
-          className={`pointer-events-auto inline-flex items-center justify-center w-14 h-14 border-0 p-0 m-0 cursor-pointer appearance-none touch-manipulation z-[10] ${prevBtnDisabled ? 'text-gray-400' : ''}`}
+          className={`pointer-events-auto inline-flex items-center justify-center w-[0.97vw] h-[0.97vw] border-0 p-0 m-0 cursor-pointer appearance-none touch-manipulation z-[10] ${prevBtnDisabled ? 'text-gray-400' : ''}`}
         />
         <NextButton
           onClick={() => { onNextButtonClick(); startAutoplay(); }}
           disabled={nextBtnDisabled}
-          className={`pointer-events-auto inline-flex items-center justify-center w-14 h-14 border-0 p-0 m-0 cursor-pointer appearance-none touch-manipulation z-[10] ${nextBtnDisabled ? 'text-gray-400' : ''}`}
+          className={`pointer-events-auto inline-flex items-center justify-center w-[0.97vw] h-[0.97vw] border-0 p-0 m-0 cursor-pointer appearance-none touch-manipulation z-[10] ${nextBtnDisabled ? 'text-gray-400' : ''}`}
         />
       </div>
 

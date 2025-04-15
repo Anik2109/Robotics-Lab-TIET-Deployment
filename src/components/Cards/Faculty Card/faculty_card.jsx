@@ -3,28 +3,28 @@ export default function FacultyCard() {
 
     return (
         <>
-            <div className="flex flex-col items-center mb-6 w-[372px] h-[772px] bg-white rounded-2xl shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] p-8">
+            <div className="flex flex-col items-center mb-[1.67vw] w-[25.83vw] h-[53.61vw] bg-white rounded-[1.11vw] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] p-[2.22vw]">
                 {/* Image Section */}
-                <div className="w-full h-[292px] bg-gray-200 rounded-2xl overflow-hidden">
-                    <img className="w-full h-full object-cover rounded-2xl" src="/assets/Home_Page/f.png" alt="Base Img" />
+                <div className="w-full h-[20.28vw] bg-gray-200 rounded-[1.11vw] overflow-hidden">
+                    <img className="w-full h-full object-cover rounded-[1.11vw]" src="/assets/Home_Page/f.png" alt="Base Img" />
                 </div>
 
-                <div className="flex flex-col items-center mt-4 text-center">
-                    <span className="text-black text-2xl font-semibold font-['Poppins'] leading-snug">
+                <div className="flex flex-col items-center mt-[1.11vw] text-center">
+                    <span className="text-black text-[1.67vw] font-semibold font-['Poppins'] leading-snug">
                         Dr. Sachin Kansal
                     </span>
-                    <span className="text-black text-base font-medium font-['Poppins'] leading-snug">
+                    <span className="text-black text-[1.11vw] font-medium font-['Poppins'] leading-snug">
                         Assistant Professor of
                     </span>
-                    <span className="text-black text-base font-medium font-['Poppins']">
+                    <span className="text-black text-[1.11vw] font-medium font-['Poppins']">
                         Computer Science Department
                     </span>
                 </div>
 
-                <div className="mt-auto pt-6">
+                <div className="mt-auto pt-[1.67vw]">
                     <div className="flex justify-center">
                         <a href={`mailto:${mail}`} target="_blank" rel="noopener noreferrer">
-                            <img src="/assets/icons/mail.svg" alt="Email Icon" className="w-6 h-6" />
+                            <img src="/assets/icons/mail.svg" alt="Email Icon" className="w-[1.67vw] h-[1.67vw]" />
                         </a>
                     </div>
                 </div>

@@ -50,18 +50,18 @@ export default function Navbar({ setshowcontent }) {
 
     return (
         <>
-            <div className="fixed top-0 left-0 z-50 opacity-80 w-full px-6 py-4 bg-white">
+            <div className="fixed top-0 left-0 z-50 opacity-80 w-full px-[1.64vw] py-[1.096vw] bg-white">
                 <div className="flex justify-between items-center">
-                    <Link to="/" className="flex items-center ">
+                    <Link to="/" className="flex items-center">
                         <div className="logo">
                             <img 
                                 src="/assets/lab_logo.jpeg" 
                                 alt="Thapar University" 
-                                className="max-w-[60px] h-auto object-contain rounded-full" 
+                                className="w-[4.11vw] h-auto object-contain rounded-full" 
                                 ref={logo}
                             />
                         </div>
-                        <div ref={rae} className="opacity-0 w-96 text-center justify-center text-[#282828] text-3xl font-medium font-poppins tracking-tight">ROBOTICS LAB, CSED, TIET</div>
+                        <div ref={rae} className="opacity-0 w-[26.3vw] text-center justify-center text-[#282828] text-[2.05vw] leading-[2.46vw] font-medium font-poppins tracking-tight">ROBOTICS LAB, CSED, TIET</div>
                     </Link>
 
                     {/* Mobile Menu Toggle
@@ -74,18 +74,18 @@ export default function Navbar({ setshowcontent }) {
                     </button> */}
 
                     {/* Developer-only button to replay animation */}
-                    <button
+                    {/* <button
                         onClick={() => {
                         sessionStorage.removeItem("navbarAnimated");
                         window.location.reload();
                       }}
-                      className="px-3 py-1 text-sm bg-blue-600 opacity-0 hover:opacity-100 rounded"
+                      className="px-[0.82vw] py-[0.274] text-[0.96vw] leading-[1.37vw] bg-blue-600 opacity-0 hover:opacity-100 rounded"
                     >
                       Replay Animation (Dev)                        
-                    </button>
+                    </button> */}
 
                     {/* Navigation Links */}
-                    <div ref={options} className="option opacity-0 flex gap-7 items-center font-poppins text-lg font-medium text-color-[#282828]">
+                    <div ref={options} className="option opacity-0 flex gap-[1.92vw] items-center font-poppins text-[1.23vw] leading-[1.92vw] font-medium text-color-[#282828]">
                         <div className="hover:text-[#0A3796] hover:scale-110 cursor-pointer ">
                             <NavLink to="/" className={({isActive})=>isActive?"text-[#0A3796]":""}>HOME</NavLink>
                         </div>

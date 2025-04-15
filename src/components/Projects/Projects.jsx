@@ -9,8 +9,8 @@ function Projects() {
 
   return (
     <>
-        <div className="px-10 w-full">
-          <div ref={projectCardRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-14 gap-y-20 mt-28 px-36">
+        <div className="px-[2.78vw] w-full">
+          <div ref={projectCardRef} className="grid grid-cols-2 px-[15vw] gap-x-[15vw] gap-y-[7vw] lg:grid-cols-3 lg:gap-x-[3.89vw] lg:gap-y-[5.56vw] mt-[7.78vw] lg:px-[10vw]">
               {projects_demodata.map((project, index) => (
                   <ProjectCard
                   key={index}

@@ -58,7 +58,7 @@ const StatsCounter = () => {
   return (
     <div
       ref={containerRef}
-      className="w-[1171px] h-[296px] mx-auto rounded-[16px] relative overflow-hidden text-white font-sans"
+      className="w-[81.32vw] h-[20.56vw] mx-auto rounded-[1.11vw] relative overflow-hidden text-white font-sans"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
@@ -70,13 +70,13 @@ const StatsCounter = () => {
         {stats.map((stat, index) => (
           <React.Fragment key={stat.label}>
             <div className="text-center">
-              <div className="text-[85px] font-semibold font-poppins">
+              <div className="text-[5.9vw] font-semibold font-poppins">
                 {Math.floor(counts[index])}{stat.suffix}
               </div>
-              <div className="text-[34px] font-medium font-poppins">{stat.label}</div>
+              <div className="text-[2.36vw] font-medium font-poppins">{stat.label}</div>
             </div>
             {index < stats.length - 1 && (
-              <div className="h-14 w-[2px] bg-white" />
+              <div className="h-[3.89vw] w-[0.14vw] bg-white" />
             )}
           </React.Fragment>
         ))}

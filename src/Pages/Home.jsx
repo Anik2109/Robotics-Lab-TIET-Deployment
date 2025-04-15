@@ -25,7 +25,7 @@ export default function Home(){
         }
     }, [location]);
 
-    return <div className="pt-[80px]">
+    return <div className="pt-[4.48vw]">
         <div className="fade-on-scroll" ref={fadeInRef}><Landing_img /></div>
         <div id="about-us" className="fade-on-scroll" ref={fadeInRef}><AboutSection /></div>
         <div id="events" className="fade-on-scroll" ref={fadeInRef}><Carousel slides={[]} options={{ loop: true }} /></div>
